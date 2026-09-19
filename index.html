@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>S8 | Evaluación Final</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         FONDO / EFECTOS
+         ===================================================== -->
+
+    <div class="background-grid"></div>
+
+    <!-- =====================================================
+         CONTENEDOR PRINCIPAL
+         ===================================================== -->
+
+    <main class="app">
+
+        <!-- =================================================
+             PANTALLA INICIO
+             ================================================= -->
+
+        <section
+            id="inicio"
+            class="screen active"
+        >
+
+            <div class="landing-card">
+
+                <div class="classified-line">
+                    DOCUMENTO DE EVALUACIÓN
+                </div>
+
+                <div class="s8-logo">
+                    S8
+                </div>
+
+                <div class="brand">
+                    <span>SECCIÓN OCTAVA</span>
+                    <small>ACADEMIA DE CIENCIAS DE LA INFORMACIÓN</small>
+                </div>
+
+                <h1>
+                    EVALUACIÓN FINAL
+                </h1>
+
+                <p class="subtitle">
+                    Certificación Académica
+                </p>
+
+                <div class="separator"></div>
+
+                <p class="description">
+                    Evaluación integral de los conocimientos adquiridos
+                    durante el proceso académico de la Academia de
+                    Ciencias de la Información S8.
+                </p>
+
+                <div class="info-grid">
+
+                    <div class="info-box">
+                        <span>ORGANIZACIÓN</span>
+                        <strong>Sección Octava | S8</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <span>TIPO</span>
+                        <strong>Certificación Académica</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <span>PREGUNTAS</span>
+                        <strong id="cantidadPreguntas">0</strong>
+                    </div>
+
+                </div>
+
+                <div class="notice">
+                    <span class="notice-icon">!</span>
+
+                    <div>
+                        <strong>ADVERTENCIA</strong>
+                        <p>
+                            La evaluación comprende contenidos correspondientes
+                            a los diferentes años y procesos de formación de la
+                            Academia.
+                        </p>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    onclick="mostrarIdentificacion()"
+                >
+                    INICIAR EVALUACIÓN
+                </button>
+
+                <div class="footer-classification">
+                    CLASIFICACIÓN: INTERNO — S8
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             IDENTIFICACIÓN
+             ================================================= -->
+
+        <section
+            id="identificacion"
+            class="screen"
+        >
+
+            <div class="form-card">
+
+                <div class="top-label">
+                    S8 / REGISTRO DEL ASPIRANTE
+                </div>
+
+                <h2>
+                    IDENTIFICACIÓN
+                </h2>
+
+                <p class="form-description">
+                    Antes de iniciar la evaluación debe registrar
+                    los datos correspondientes al aspirante.
+                </p>
+
+                <div class="form-group">
+
+                    <label for="nombre">
+                        NOMBRE COMPLETO
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        placeholder="Ingrese su nombre completo"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="roblox">
+                        USUARIO DE ROBLOX
+                    </label>
+
+                    <input
+                        type="text"
+                        id="roblox"
+                        placeholder="Ingrese su usuario de Roblox"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="fixed-data">
+
+                    <div>
+                        <span>RANGO</span>
+                        <strong>ASPIRANTE</strong>
+                    </div>
+
+                    <div>
+                        <span>ESPECIALIZACIÓN</span>
+                        <strong>GENERAL</strong>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="errorIdentificacion"
+                    class="error-message"
+                ></div>
+
+
+                <div class="button-row">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        onclick="volverInicio()"
+                    >
+                        VOLVER
+                    </button>
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        onclick="comenzarEvaluacion()"
+                    >
+                        COMENZAR
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             EVALUACIÓN
+             ================================================= -->
+
+        <section
+            id="evaluacion"
+            class="screen"
+        >
+
+            <div class="exam-layout">
+
+                <!-- =========================================
+                     SIDEBAR
+                     ========================================= -->
+
+                <aside class="exam-sidebar">
+
+                    <div class="sidebar-brand">
+
+                        <div class="mini-logo">
+                            S8
+                        </div>
+
+                        <div>
+                            <strong>ACADEMIA S8</strong>
+                            <small>EVALUACIÓN FINAL</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="candidate-card">
+
+                        <span>ASPIRANTE</span>
+
+                        <strong id="sidebarNombre">
+                            —
+                        </strong>
+
+                        <small id="sidebarRoblox">
+                            —
+                        </small>
+
+                    </div>
+
+
+                    <div class="progress-section">
+
+                        <div class="progress-header">
+
+                            <span>PROGRESO</span>
+
+                            <span>
+                                <b id="respondidas">0</b>
+                                /
+                                <b id="restantes">0</b>
+                            </span>
+
+                        </div>
+
+                        <div class="progress-bar-container">
+
+                            <div
+                                id="progressBar"
+                                class="progress-bar"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="navigator-title">
+                        NAVEGACIÓN
+                    </div>
+
+                    <div
+                        id="questionGrid"
+                        class="question-grid"
+                    ></div>
+
+
+                    <div class="legend">
+
+                        <div>
+                            <span class="legend-box current"></span>
+                            Actual
+                        </div>
+
+                        <div>
+                            <span class="legend-box answered"></span>
+                            Respondida
+                        </div>
+
+                    </div>
+
+                </aside>
+
+
+                <!-- =========================================
+                     ÁREA DE PREGUNTA
+                     ========================================= -->
+
+                <div class="exam-content">
+
+                    <header class="exam-header">
+
+                        <div>
+
+                            <span
+                                id="añoPregunta"
+                                class="section-tag"
+                            >
+                                AÑO I
+                            </span>
+
+                            <span
+                                id="formularioPregunta"
+                                class="form-tag"
+                            >
+                                FORMACIÓN GENERAL
+                            </span>
+
+                        </div>
+
+                        <div
+                            id="contadorPregunta"
+                            class="question-counter"
+                        >
+                            PREGUNTA 1 DE 40
+                        </div>
+
+                    </header>
+
+
+                    <div class="question-card">
+
+                        <div class="question-top">
+
+                            <span class="question-label">
+                                PREGUNTA
+                            </span>
+
+                            <span
+                                id="numeroPregunta"
+                                class="question-number-large"
+                            >
+                                1
+                            </span>
+
+                        </div>
+
+
+                        <h2 id="textoPregunta">
+                            Cargando pregunta...
+                        </h2>
+
+
+                        <div
+                            id="opciones"
+                            class="options"
+                        ></div>
+
+
+                        <div class="exam-navigation">
+
+                            <button
+                                type="button"
+                                id="btnAnterior"
+                                class="secondary-button"
+                                onclick="preguntaAnterior()"
+                            >
+                                ← ANTERIOR
+                            </button>
+
+
+                            <button
+                                type="button"
+                                id="btnSiguiente"
+                                class="primary-button"
+                                onclick="siguientePregunta()"
+                            >
+                                SIGUIENTE →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RESULTADO
+             ================================================= -->
+
+        <section
+            id="resultado"
+            class="screen"
+        >
+
+            <div class="result-card">
+
+                <div class="result-header">
+
+                    <div class="s8-logo">
+                        S8
+                    </div>
+
+                    <div>
+
+                        <span>
+                            ACADEMIA DE CIENCIAS DE LA INFORMACIÓN
+                        </span>
+
+                        <h1>
+                            RESULTADO DE EVALUACIÓN
+                        </h1>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-main">
+
+                    <span class="result-label">
+                        PUNTAJE OBTENIDO
+                    </span>
+
+                    <div
+                        id="puntajeFinal"
+                        class="final-score"
+                    >
+                        0%
+                    </div>
+
+                    <div
+                        id="estadoResultado"
+                        class="result-status"
+                    >
+                        —
+                    </div>
+
+                    <p id="mensajeResultado">
+                        —
+                    </p>
+
+                </div>
+
+
+                <div class="result-data">
+
+                    <div>
+                        <span>ASPIRANTE</span>
+                        <strong id="resultadoNombre">—</strong>
+                    </div>
+
+                    <div>
+                        <span>ROBLOX</span>
+                        <strong id="resultadoRoblox">—</strong>
+                    </div>
+
+                    <div>
+                        <span>PREGUNTAS</span>
+                        <strong id="resultadoPreguntas">—</strong>
+                    </div>
+
+                    <div>
+                        <span>FECHA</span>
+                        <strong id="resultadoFecha">—</strong>
+                    </div>
+
+                    <div>
+                        <span>CORRECTAS</span>
+                        <strong id="resultadoCorrectas">—</strong>
+                    </div>
+
+                    <div>
+                        <span>INCORRECTAS</span>
+                        <strong id="resultadoIncorrectas">—</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="evaluation-id">
+
+                    <span>
+                        ID DE EVALUACIÓN
+                    </span>
+
+                    <strong id="evaluationId">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="screenshot-notice">
+
+                    <strong>
+                        REGISTRO DEL RESULTADO
+                    </strong>
+
+                    <p>
+                        Tome una captura de pantalla de este resultado
+                        y entréguela al instructor correspondiente.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    onclick="volverInicio()"
+                >
+                    VOLVER AL INICIO
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         SCRIPTS
+         ===================================================== -->
+
+    <!-- PRIMERO LAS PREGUNTAS -->
+    <script src="data/preguntas.js"></script>
+
+    <!-- DESPUÉS EL SCRIPT PRINCIPAL -->
+    <script src="script.js"></script>
+
+</body>
+</html>
